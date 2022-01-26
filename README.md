@@ -1,5 +1,5 @@
 # Extas.app
-Extas SwiftUI app
+Extas SwiftUI app.
 Here you can find the model of the real app - Extas, which you can find on AppStore - https://apps.apple.com/ru/app/extas/id1601767963
 
 
