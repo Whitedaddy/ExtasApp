@@ -15,8 +15,8 @@ class ActionViewController: UIViewController {
     @ObservedObject var backConnection = BackConnection ()
     
     //test
-    var Pageurl = "https://avhook.ru/"
-    var New_URL = URL (string: "https://avhook.ru/")
+    var Pageurl = ""
+    var New_URL = URL (string: "")
     var PlatformChosen = "none"
     //var serv1 = UserDefaults.standard.string(forKey: "Service")
 
@@ -58,7 +58,7 @@ class ActionViewController: UIViewController {
     
     func FastSongOpen(songURL:String, Service: String)
     {
-        let ServerUrl = URL(string: "https://extas.space/search/single")
+        let ServerUrl = URL(string: "")
         
         guard let requestUrl = ServerUrl
         else { fatalError() }

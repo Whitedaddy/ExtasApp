@@ -36,7 +36,7 @@ extension BackConnection // Song
     
     func GetNewSong(songURL:String, Service: String)
     {
-        let ServerUrl = URL(string: "https://extas.space/search/single")
+        let ServerUrl = URL(string: "")
         
         
         guard let requestUrl = ServerUrl
@@ -97,7 +97,7 @@ extension BackConnection // Top
 {
     func GetTop(PlaceLimit: Int)
     {
-        let ServerUrl = URL(string: "https://extas.space/stats/top")
+        let ServerUrl = URL(string: "")
         guard let requestUrl = ServerUrl
         else { fatalError() }
         
