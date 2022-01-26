@@ -1,0 +1,145 @@
+            // Button Reset App
+//                HStack
+//                {
+//                    Button (action:{
+//                        serv1 = "None"
+//                        UserDefaults.standard.set(self.serv1, forKey: "Service")})
+//                    {
+//                        Text ("Reset App")
+//                            .frame(width: 100, height: 50)
+//                            .background(Color("MyWhiteColor"))
+//                            .cornerRadius(45)
+//                            .foregroundColor(.white)
+//                            .shadow(color: Color("MyPurpleColor"), radius: 10, x: 0, y: 0)
+//                    }
+//
+//                }
+
+
+
+//ZStack // TabBar
+//{
+//    VStack
+//    {
+//        Spacer()
+//
+//        HStack // left and right buttons
+//        {
+//            //TOP Button
+//            Button (action: {viewRouter.SelectedTab = "TOP"})
+//            {
+//                    Image ("CrownWhite")
+//                        .resizable ()
+//                        .frame(width: 100, height: 100)
+//                        //.opacity(GetOpacity(nameservice: <#T##String?#>))
+//            }
+//            Spacer()
+//
+//            //Center Button
+//            Button (action: {viewRouter.SelectedTab = "Search"})
+//            {
+//                ZStack
+//                {
+//                    if viewRouter.SelectedTab == "Search"
+//                    {
+//                        Circle().fill(gradient)
+//                            .frame(width: 95, height: 95)
+//                            .opacity(0.1)
+//
+//
+//                    }
+//
+//                    Image ("Link")
+//                        .resizable ()
+//                        .frame(width: 90, height: 90)
+//                        .opacity(0.7)
+//
+//                }
+//            }
+//            .offset(y:-15)
+//
+//            Spacer()
+//
+//            //Settings button
+//            Button (action: {viewRouter.SelectedTab = "Settings"})
+//            {
+//                if viewRouter.SelectedTab == "Settings"
+//                {
+//                    Image ("GearWhite")
+//                        .resizable ()
+//                        .frame(width: 100, height: 100)
+//                        .foregroundColor(.gray)
+//                    // .padding(-10)
+//                }
+//                else
+//                {
+//                    Image ("GearWhite")
+//                        .resizable ()
+//                        .frame(width: 100, height: 100)
+//                        .opacity(0.3)
+//                    // .padding(-10)
+//                }
+//            }
+//        }
+//        .background(Color(.black))
+//
+//
+//    }
+//}
+
+
+//VStack //Screens
+//{
+//    ZStack //Whitch Screen is on board
+//    {
+//        switch viewRouter.SelectedTab
+//        {
+//        case "TOP":
+//            TOPScreen()
+//        case "Search":
+//            SearchSongView()
+//        case "Settings":
+//            Settings()
+//        default:
+//            Text("")
+//        }
+//    }
+//    .foregroundColor(.white)
+//    .background(Image("backgroundReady"))
+
+
+                Text("Самые популярные артисты")
+                    .frame(width: Get_Width(w: 0.9), height: Get_Height(h: 0.05))
+                
+                VStack
+                {
+                    ForEach(1..<4)
+                    {  fd in
+                        Link(destination: URL(string: "https://www.instagram.com/poka___secret/")!)
+                        {
+                            HStack
+                            {
+                                Image(systemName: "\(fd).circle.fill")
+                                Text("Artist Name # \(fd)")
+                            }
+                            .frame(width: Get_Width(w: 0.8), height: Get_Height(h: 0.07))
+                            .background(Color.black.opacity(0.9))
+                            .cornerRadius(45)
+                            .shadow(color:Color.purple,radius: 10, x: 0, y: 0)
+                            .padding(.bottom, 3)
+                        }
+                    }
+                    
+                    Button(action: {
+                        Artists.toggle()
+                    },
+                           label:
+                            {
+                        Text("Смотреть всех")
+                    })
+                        .padding(5)
+                        .background(Color.black)
+                        .cornerRadius(20)
+                        .shadow(color: Color("MyWhiteColor").opacity(0.6), radius: 10, x: 0, y: 0)
+                        .sheet(isPresented: $Artists, content: {TopArtisits()})
+                }

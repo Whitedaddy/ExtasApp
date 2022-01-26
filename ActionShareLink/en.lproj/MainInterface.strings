@@ -1,0 +1,30 @@
+
+/* Class = "UIButton"; configuration.title = "YouTube"; ObjectID = "DBI-Fi-t0f"; */
+"DBI-Fi-t0f.configuration.title" = "YouTube";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "DBI-Fi-t0f"; */
+"DBI-Fi-t0f.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "YandexMusic"; ObjectID = "EWj-J6-tyw"; */
+"EWj-J6-tyw.configuration.title" = "YandexMusic";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "EWj-J6-tyw"; */
+"EWj-J6-tyw.normalTitle" = "Button";
+
+/* Class = "UIViewController"; title = "Image"; ObjectID = "ObA-dk-sSI"; */
+"ObA-dk-sSI.title" = "Image";
+
+/* Class = "UIButton"; configuration.title = "Spotify"; ObjectID = "VDw-GE-kQy"; */
+"VDw-GE-kQy.configuration.title" = "Spotify";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "VDw-GE-kQy"; */
+"VDw-GE-kQy.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "WYi-yp-eM6"; */
+"WYi-yp-eM6.title" = "Done";
+
+/* Class = "UIButton"; configuration.title = "AppleMusic"; ObjectID = "tLh-2R-X73"; */
+"tLh-2R-X73.configuration.title" = "AppleMusic";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "tLh-2R-X73"; */
+"tLh-2R-X73.normalTitle" = "Button";
