@@ -9,21 +9,26 @@ import SwiftUI
 
 struct quick_view: View
 {
-    @ObservedObject var backConnection = BackConnection ()
     
-//    URL(string: "https://www.apple.com")!
+    @StateObject var Multiple = MultibleSongsCombine ()
     
     var body: some View
     {
         VStack
         {
-            Button(action:
-            {} )
-            {Text("GetTop")}
-           
-            
-            
+//            ForEach (Multiple.songs,id: \.self)
+//            {   song in
+//                VStack
+//                {
+//                    Text(song.service_name)
+//                    Text(song.song_url)
+//                        .foregroundColor(Color.red)
+//                        .multilineTextAlignment(.center)
+//                }
+//                .padding()
+//            }
         }
+//        .onAppear(perform: {Multiple.GetMultipleSongs(songURL: "https://music.yandex.ru/album/4066489/track/33274678")})
     }
 }
 

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BackgroundView: View {
     
-    let timer = Timer.publish(every: 4, on: .main, in: .common).autoconnect()
+
 
     @State var UpdatePlaces: CGFloat = 3
     @State var CircleRadious: Bool = true
@@ -24,11 +24,8 @@ struct BackgroundView: View {
                
                     Circle()
                         .fill(Color.white)
-                        .frame(width: CircleRadious ? 0:CGFloat.random(in:1...UpdatePlaces))
+                        .frame(width: CircleRadious ? 0:CGFloat.random(in:1...3))
                         .offset(x: CGFloat.random(in:-200...200), y: CGFloat.random(in:-450...450))
-                        .onReceive(timer) {
-                        _ in
-                        UpdatePlaces =  CGFloat.random(in:2...3) }
             }  )
             Color
                 .black

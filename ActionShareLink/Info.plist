@@ -29,5 +29,10 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.ui-services</string>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Cocogoose_Pro_Thin-trial.ttf</string>
+		<string>rawer-thin.otf</string>
+	</array>
 </dict>
 </plist>

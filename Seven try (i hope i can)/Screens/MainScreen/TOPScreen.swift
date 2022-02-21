@@ -15,7 +15,7 @@ struct TOPScreen: View
 {
     
     @EnvironmentObject var viewRouter: ViewRouter
-    @ObservedObject var backConnection = BackConnection ()
+    @StateObject var backConnection = TopCombine ()
     
     @State var Songs:Bool = false
     @State var Artists:Bool = false
@@ -80,12 +80,11 @@ struct TOPScreen: View
                         .shadow(color:Color.purple,radius: 10, x: 5, y: 5)
                         .padding(.bottom, 10)
                     }
-                    .onAppear(perform: {backConnection.GetTop(PlaceLimit: limit)} )
                 }
                 
                 else
                 {
-                    ForEach (backConnection.tracksss)
+                    ForEach (backConnection.Tracksss)
                     {fd in
                         switch serv1
                             {
@@ -121,6 +120,7 @@ struct TOPScreen: View
                     .sheet(isPresented: $Songs, content: {TopSongs()})
                 
             }
+            .onAppear(perform: {backConnection.GetTop(PlaceLimit: limit)} )
             
             Spacer()
             

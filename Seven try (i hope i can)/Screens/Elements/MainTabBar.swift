@@ -28,7 +28,9 @@ struct MainTabBar: View {
                 {
                     item in
                     
-                    Button(action:{viewRouter.SelectedTab = item})
+                    Button(action:{
+                        if (viewRouter.SelectedTab != item)
+                        {viewRouter.SelectedTab = item}})
                     {
                         if(item == viewRouter.SelectedTab)
                         {
@@ -52,7 +54,9 @@ struct MainTabBar: View {
             .background(Color.black)
             .cornerRadius(35)
             
-            Button(action: {viewRouter.SelectedTab = "Link"})
+            Button(action: {
+                if (viewRouter.SelectedTab != "Link")
+                {viewRouter.SelectedTab = "Link"} } )
             {
                 if (viewRouter.SelectedTab == "Link")
                 {

@@ -8,8 +8,6 @@
 import SwiftUI
 
 
-var ConfirmedServices = ["AppleMusic","YandexMusic","Spotify","YouTube"]
-let userDefaults = UserDefaults(suiteName: "group.mot.Seven-try--i-hope-i-can-")
 
 struct Settings: View
 {

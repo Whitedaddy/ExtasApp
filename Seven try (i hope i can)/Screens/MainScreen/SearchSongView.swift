@@ -10,23 +10,17 @@ import SwiftUI
 struct SearchSongView: View
 {
     @EnvironmentObject var platformID: PlatformID
-    @ObservedObject var backConnection = BackConnection ()
-    
-    // let uDefaults = UserDefaults(suiteName: "group.mot.Seven-try--i-hope-i-can-")
+    @ObservedObject var backConnection = SingleSongCombine ()
     
     @State var SongLink = ""
     @State var NewURL = "None"
     @State var serv1 = userDefaults!.string(forKey: "Service")
     
-    
-    
-    let colors = Gradient(colors: [Color("MyWhiteColor"), Color("MyPurpleColor")])
-    
     var body: some View
     {
             VStack
             {
-                
+                Spacer(minLength: Get_Height(h: 0.07))
                 
                 VStack//Text and arrow
                 {
@@ -34,13 +28,14 @@ struct SearchSongView: View
                         .multilineTextAlignment(.center)
                         .font(Font.custom("Rawer-CondensedThin", size: 30))
                         .frame(width: Get_Width(w: 0.95), height: Get_Height(h: 0.08))
-                        .padding(.vertical, 10)
                     
                     Image("Arrow")
                         .resizable()
                         .frame(width: Get_Width(w: 0.15), height: Get_Height(h: 0.03))
                         .background(Color.black.opacity(0.1))
+                        .padding(.bottom, 15)
                 }
+                
                 
                 VStack //TexField for link
                 {
@@ -61,30 +56,35 @@ struct SearchSongView: View
                 }
                 .padding(20)
                 
-                ZStack //Button to get new link
-                {
-                    Button (action:{   if(backConnection.OldSongUrl != "")
-                        {backConnection.MainExchangeButtonOn = true}
-                        DispatchQueue.global(qos: .userInitiated).async
-                        {backConnection.GetNewSong(songURL: backConnection.OldSongUrl, Service: serv1!)}
-                        UIApplication.shared.endEditing()
-                    })
+                GeometryReader
+                {geometry in
+                    ZStack //Button to get new link
                     {
-                        Image("Transfer")
-                            .resizable()
-                            .frame(width: Get_Height(h: 0.1), height: Get_Height(h: 0.1))
-                            .shadow(color:Color("MyWhiteColor"),radius: 10, x: 0, y: 0)
+                        Button (action:{   if(backConnection.OldSongUrl != "")
+                            {backConnection.MainExchangeButtonOn = true}
+                            DispatchQueue.global(qos: .userInitiated).async
+                            {backConnection.GetSingleSong(songURL: backConnection.OldSongUrl, Service: serv1!)}
+                            UIApplication.shared.endEditing()
+                        })
+                        {
+                            Image("Transfer")
+                                .resizable()
+                                .frame(width: Get_Height(h: 0.1), height: Get_Height(h: 0.1))
+                                .shadow(color:Color("MyWhiteColor"),radius: 10, x: 0, y: 0)
+                        }
+                        .padding(.vertical, geometry.size.height/2)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        .rotationEffect(Angle(degrees:backConnection.MainExchangeButtonOn ? 0 : -360))
+                        .animation(backConnection.MainExchangeButtonOn ?
+                                   Animation
+                                    .linear(duration: 2.0)
+                                   //.repeatForever(autoreverses: false)
+                                   :Animation
+                                    .linear(duration: 0)
+                        )
+                        
                     }
-                    .padding(.vertical, 8)
-                    .rotationEffect(Angle(degrees:backConnection.MainExchangeButtonOn ? 0 : -360))
-                    .animation(backConnection.MainExchangeButtonOn ?
-                               Animation
-                                .linear(duration: 2.0)
-                                //.repeatForever(autoreverses: false)
-                               :Animation
-                                .linear(duration: 0)
-                    )
-                    
+                    .onTapGesture {UIApplication.shared.endEditing()}
                 }
                 
                 
@@ -101,9 +101,9 @@ struct SearchSongView: View
                 
                 VStack
                 {
-                    if backConnection.NewSongUrl != "None" && backConnection.NewSongUrl != "none"
+                    if backConnection.NewSong.url != "None" && backConnection.NewSong.url != "none"
                     {
-                        Link(destination: URL(string: backConnection.NewSongUrl)
+                        Link(destination: URL(string: backConnection.NewSong.url)
                              ?? URL(string: "https://www.instagram.com/poka___secret/")!)
                         {
                             Text("ЖМИ!")
@@ -129,13 +129,14 @@ struct SearchSongView: View
                 
                 HStack //Platform Chosen
                 {
-                    Text("Chosen: \(String(describing:serv1!))")
+                    Text("Выбрано: \(String(describing:serv1!))")
                 }
                 .padding(.top, 15)
                 
-                Spacer(minLength: Get_Height(h: 0.1))
+                Spacer(minLength: Get_Height(h: 0.2))
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
+            .onTapGesture {UIApplication.shared.endEditing()}
     }
 }
 

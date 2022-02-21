@@ -8,11 +8,15 @@
 import Foundation
 import SwiftUI
 
+// SingleSong
 struct ParsedSong: Decodable
 {
     var url: String
 }
+////////////////////////////////////////////////////////////
 
+
+//TOP
 struct ParsedTOP: Decodable
 {
     var tracks: [track]
@@ -30,3 +34,17 @@ struct track: Decodable, Identifiable, Hashable
     let yandex_url: String
     let youtube_url: String
 }
+////////////////////////////////////////////////////////////
+
+//Multiple Songs
+struct ParsedSongs: Decodable
+{
+    var urls: [Song]
+}
+
+struct Song: Decodable, Hashable
+{
+    let service_name: String
+    let song_url: String
+}
+///////////////////////////////////////////////////////////////////
